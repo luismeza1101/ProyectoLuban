@@ -8,6 +8,7 @@ import DataProductos from "./pages/DataProductos";
 import AboutUs from "./pages/AboutUs";
 import Login from "./pages/Login";
 import { ProductProvider } from "./context/Contexto";
+import Pagos from "./pages/Pagos";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
           <Route path="/product/:id" element={<DataProductos />} />
           <Route path="/aboutUs" element={<AboutUs />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/pago" element={<Pagos />} />
         </Routes>
       </BrowserRouter>
     </ProductProvider>

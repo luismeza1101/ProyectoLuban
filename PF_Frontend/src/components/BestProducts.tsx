@@ -6,7 +6,7 @@ const BestProducts = () => {
   return (
     //Contenedor de los productos mas vendidos de la tienda
     <div className='section'>
-    <h2>Lo mas vendido</h2>
+    <h2>Las mejores ofertas</h2>
         <section className='bestProducts'>
           {/* Cartas de los productos mas vendidos */}
             {productsMasVendidos.map(product => (

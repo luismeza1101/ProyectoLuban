@@ -1,6 +1,7 @@
 import { useContext } from 'react';
 import '../StyleSheets/ModalPago.css'
 import { ProductContext } from '../context/Contexto';
+import { Link } from 'react-router-dom';
 
 const ModalPago = () => {
 
@@ -26,7 +27,7 @@ const ModalPago = () => {
             pago en el siguiente paso.
           </p>
         </div>
-        <button type="button" className="btn btn-dark btnPagar">Ir a Comprar</button>
+        <Link type="button" className="btn btn-dark btnPagar" to={'/pago'}>Ir a Comprar</Link>
     </div>
   );
 };

@@ -34,7 +34,8 @@ export const getImage = (imageName: string, categoria: number) => {
          cat = 'baño/'
         break;       
     }
-    return `../../public/FotosMuebles/${cat}${imageName}`;
+    // return `../../public/FotosMuebles/${cat}${imageName}`;
+    return `/FotosMuebles/${cat}${imageName}`; // Funciona en produccion
   } catch (err) {
     console.error(`Error al cargar la imagen: ${imageName}`, err);
     return undefined;

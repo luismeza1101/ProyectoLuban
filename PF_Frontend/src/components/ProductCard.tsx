@@ -1,17 +1,19 @@
 import { useContext } from "react";
 import "../StyleSheets/ProductCard.css";
 import { ProductContext } from "../context/Contexto";
-import { getImage } from "../fuctions";
-// import { Link } from 'react-router-dom';
+import { addCar, getImage } from "../fuctions";
+import { Link } from 'react-router-dom';
 
 interface Props {
   name: string;
   price: number;
   image: string;
   categoria: number;
+  id: string
 }
 
-const ProductCard: React.FC<Props> = ({ name, price, image, categoria }) => {
+const ProductCard: React.FC<Props> = ({ name, price, image, categoria, id}) => {
+
   const productContext = useContext(ProductContext);
 
   if (!productContext) {
@@ -22,32 +24,27 @@ const ProductCard: React.FC<Props> = ({ name, price, image, categoria }) => {
 
   const imageURL = getImage(image, categoria);
 
-  const addCar = () => {
-    let newPrice = price.toString();
-    setProductCar([...productCar, { name: name, price: price }]);
-    alert("Producto añadido al carrito");
-    setPagoTotal(pagoTotal + parseFloat(newPrice));
-  };
-
   return (
     // Carta que contiene cada producto en individual
     <div className="card productCard">
-      {/* Imagen del producto */}
-      <img
-        src={imageURL}
-        className="card-img-top productCard__img"
-        alt="Imagen del producto"
-      />
-      <div className="card-body">
-        {/* Nombre del producto */}
-        <h5 className="card-title">{name}</h5>
-        {/* Precio */}
-        <p className="card-text price">{`$${price}`}</p>
-        {/* Boton de añadir al carrito */}
-        <button className="btn btn-dark" onClick={() => addCar()}>
-          Añadir al carrito
-        </button>
-      </div>
+      <Link className='card__link' to={`/product/${id}`}>
+        {/* Imagen del producto */}
+        <img
+          src={imageURL}
+          className="card-img-top productCard__img"
+          alt="Imagen del producto"
+        />
+        <div className="card-body">
+          {/* Nombre del producto */}
+          <h5 className="card-title">{name}</h5>
+          {/* Precio */}
+          <p className="card-text price">{`$${price}`}</p>
+        </div>
+      </Link>
+          {/* Boton de añadir al carrito */}
+          <button className="btn btn-dark productCard__btn" onClick={() => addCar(price, productCar, setProductCar, setPagoTotal, pagoTotal, name)}>
+            Añadir al carrito
+          </button>
     </div>
   );
 };

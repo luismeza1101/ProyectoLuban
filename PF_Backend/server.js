@@ -108,8 +108,51 @@ app.get('/api/products', (req, res) => {
   });
 });
 
+// Endpoint para obtener información de cada producto
+app.get('/api/products/:id', (req, res) => {
+  const id = req.params.id; 
+  const query = 'SELECT * FROM Productos WHERE id = ?';
+  connection.query(query, [id], (error, results) => {
+    if (error) {
+      console.error('Error al obtener el producto:', error);
+      return res.status(500).json({ message: 'Error interno del servidor' });
+    }
+    if (results.length === 0) {
+      return res.status(404).json({ message: 'Producto no encontrado' });
+    }
+    res.status(200).json(results[0]);
+  });
+});
 
+
+// Endpoint para obtener la informacion de los productos en oferta
+app.get('/api/oferta', (req, res) =>{
+  const query = 'SELECT * FROM Ofertas';
+  connection.query(query, (error, results) => {
+    if (error) {
+      console.error('Error al obtener los productos:', error);
+      return res.status(500).json({ message: 'Error interno del servidor' });
+    }
+    res.status(200).json(results);
+  });
+})
 
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
+});
+
+// Endpoint para obtener información de cada producto en oferta
+app.get('/api/oferta/:id', (req, res) => {
+  const id = req.params.id; 
+  const query = 'SELECT * FROM Ofertas WHERE id = ?';
+  connection.query(query, [id], (error, results) => {
+    if (error) {
+      console.error('Error al obtener el producto:', error);
+      return res.status(500).json({ message: 'Error interno del servidor' });
+    }
+    if (results.length === 0) {
+      return res.status(404).json({ message: 'Producto no encontrado' });
+    }
+    res.status(200).json(results[0]);
+  });
 });

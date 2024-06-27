@@ -51,6 +51,7 @@ const Products: React.FC = () => {
           image={product.imagen_url}
           categoria={product.categoria_id}
           key={product.id}
+          id={product.id}
         />
       ))}
     </section>

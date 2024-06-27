@@ -1,6 +1,8 @@
+import { CarProduct } from "./types";
+
 // Funcion para aumentar la cantidad de productos
 export const increaseCant = (minCant: number, setMinCant: React.Dispatch<React.SetStateAction<number>>) => {
-  if (minCant == 9) {
+  if (minCant == 5) {
     alert("Solo puedes comprar un maximo de 9 productos");
   } else {
     setMinCant(minCant + 1);
@@ -40,4 +42,11 @@ export const getImage = (imageName: string, categoria: number) => {
     console.error(`Error al cargar la imagen: ${imageName}`, err);
     return undefined;
   }
+};
+// Funcion para añadir al carrito
+export const addCar = (price: number, productCar: CarProduct[], setProductCar: (productCar: CarProduct[]) => void, setPagoTotal: (monto: number) => void, pagoTotal: number, name: string) => {
+  let newPrice = price.toString();
+  setProductCar([...productCar, { name: name, price: price }]);
+  alert("Producto añadido al carrito");
+  setPagoTotal(pagoTotal + parseFloat(newPrice));
 };

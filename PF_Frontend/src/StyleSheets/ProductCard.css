@@ -1,4 +1,17 @@
-.productCard__img{
-    /* width: 100%; */
-    min-height: auto;
+.productCard {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 10px;
+  border: 2px solid #000;
 }
+.productCard__btn {
+  width: 90%;
+  margin: 0 auto;
+}
+.card__link {
+  color: #000;
+  text-decoration: none;
+}
+ .card img{
+    width: 100%;
+ }

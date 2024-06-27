@@ -1,16 +1,7 @@
 import React, { useContext, useState, useEffect } from 'react';
 import '../StyleSheets/CatProducts.css'
 import { ProductContext } from '../context/Contexto';
-
-interface Product {
-  id: number;
-  nombre: string;
-  descripcion: string;
-  precio: number;
-  stock: number;
-  categoria_id: number;
-  imagen_url: string;
-}
+import { Product } from '../types';
 
 const CatProducts: React.FC = () => {
   const productContext = useContext(ProductContext);

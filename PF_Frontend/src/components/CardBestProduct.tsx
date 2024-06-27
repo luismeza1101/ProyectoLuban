@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import '../StyleSheets/CardBestProduct.css'
+
 interface CardBestProductProps {
   title: string;
   image: string;
@@ -7,11 +8,12 @@ interface CardBestProductProps {
   descuento: number
 }
 const CardBestProduct: React.FC<CardBestProductProps> = ({image,title, id, descuento}) =>{
+
   return (
     //Carta del producto mas vendido
-    <Link className='cardBestP' to={`/product/${id}`}>
+    <Link className='cardBestP' to={`/oferta/${id}`}>
       {/* Imagen del producto */}
-      <img src= {image} alt="..."  className='cardBestP__img'/>
+      <img src= {`../../public/${image}`} alt={`Imagen de ${title}`}  className='cardBestP__img'/>
       {/* Nombre del producto */}
       <p className='cardBestP__text'> {title} </p>
       {/* Descuento */}

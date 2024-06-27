@@ -1,19 +1,5 @@
 import React, { createContext, useState, ReactNode } from 'react';
-
-interface Product {
-  id: number;
-  nombre: string;
-  descripcion: string;
-  precio: number;
-  stock: number;
-  categoria_id: number;
-  imagen_url: string;
-}
-
-interface CarProduct {
-    name: string
-    price: number
-  }
+import { Product, CarProduct} from '../types';
 
 interface ProductContextType {
   products: Product[];
@@ -29,7 +15,6 @@ interface ProductContextType {
   setFilterPro: (filter: Product[]) => void
 }
 
-
 export const ProductContext = createContext<ProductContextType | undefined>(undefined);
 
 export const ProductProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
@@ -43,10 +28,9 @@ export const ProductProvider: React.FC<{ children: ReactNode }> = ({ children })
     const deletePrice = price * cantidad;
     setPagoTotal(pagoTotal - deletePrice)
   };
-  
 
   return (
-    <ProductContext.Provider value={{ products, setProducts, productCar, setProductCar, removeProductFromCar, pagoTotal, setPagoTotal, cateProduct, setCateProduct, filterPro, setFilterPro  }}>
+    <ProductContext.Provider value={{ products, setProducts, productCar, setProductCar, removeProductFromCar, pagoTotal, setPagoTotal, cateProduct, setCateProduct, filterPro, setFilterPro }}>
       {children}
     </ProductContext.Provider>
   );

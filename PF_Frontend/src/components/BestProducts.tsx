@@ -10,7 +10,7 @@ const BestProducts = () => {
         <section className='bestProducts'>
           {/* Cartas de los productos mas vendidos */}
             {productsMasVendidos.map(product => (
-              <CardBestProduct key={product.id} title={product.nombre} image={product.imagen} id={product.id} />
+              <CardBestProduct key={product.id} title={product.nombre} image={product.imagen} id={product.id} descuento={product.descuento}/>
             ))}
         </section>
     </div>

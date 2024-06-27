@@ -9,6 +9,7 @@ import AboutUs from "./pages/AboutUs";
 import Login from "./pages/Login";
 import { ProductProvider } from "./context/Contexto";
 import Pagos from "./pages/Pagos";
+import LibroReclamaciones from "./pages/LibroReclamaciones";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
           <Route path="/aboutUs" element={<AboutUs />} />
           <Route path="/login" element={<Login />} />
           <Route path="/pago" element={<Pagos />} />
+          <Route path="/libroReclamaciones" element={<LibroReclamaciones />} />
         </Routes>
       </BrowserRouter>
     </ProductProvider>

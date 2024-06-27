@@ -48,6 +48,9 @@ const Footer = () => {
           <li className="links__item">
             <Link to="/aboutUs">Sobre Nosotros</Link>
           </li>
+          <li className="links__item">
+            <Link to="/libroReclamaciones" target="blanck">Libro de reclamaciones</Link>
+          </li>
         </ul>
       </div>
       <hr className="footer__linea" />

@@ -1,0 +1,39 @@
+/* src/StyleSheets/Search.css */
+.hit-item {
+  border: 1px solid #ccc;
+  background-color: #ccc;
+  padding: 16px;
+  margin: 7px;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.hit-name {
+  font-size: 1em;
+  color: #000;
+}
+
+.ais-SearchBox{
+  width: 100%;
+}
+.ais-Hits-list {
+  list-style: none;
+  position: absolute;
+  z-index: 100;
+  width: 400px;
+  top: 40px;
+  left: -60px; 
+}
+
+.ais-Hits-item {
+  height: 30px;
+}
+.ais-SearchBox-reset{
+  display: none;
+}
+.ais-SearchBox-submit{
+  background-color: transparent;
+}

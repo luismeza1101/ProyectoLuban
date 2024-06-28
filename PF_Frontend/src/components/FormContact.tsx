@@ -6,6 +6,12 @@ const FormContact: React.FC = () => {
   const [asunto, setAsunto] = useState("");
   const [text, setText] = useState("");
 
+  const limpiarCampos = () => {
+    setEmail(''),
+    setAsunto('')
+    setText('')
+  }
+
   const handleSubmit = async (e: any) => {
     e.preventDefault();
 
@@ -25,13 +31,17 @@ const FormContact: React.FC = () => {
 
       if (response.ok) {
         alert("Correo enviado correctamente");
+        limpiarCampos()
       } else {
         alert("Error al enviar el correo");
       }
     } catch (error) {
       console.error("Error al enviar el correo:", error);
     }
+   
   };
+
+  
 
   return (
     // Formulario donde el usuario podra mandar sus quejas o dudas

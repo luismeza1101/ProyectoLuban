@@ -13,6 +13,8 @@ interface ProductContextType {
   setCateProduct: (cate: number) => void
   filterPro: Product[] 
   setFilterPro: (filter: Product[]) => void
+  user: string
+  setUser: (name :string) => void
 }
 
 export const ProductContext = createContext<ProductContextType | undefined>(undefined);
@@ -28,9 +30,10 @@ export const ProductProvider: React.FC<{ children: ReactNode }> = ({ children })
     const deletePrice = price * cantidad;
     setPagoTotal(pagoTotal - deletePrice)
   };
+  const [user, setUser] = useState('Iniciar Sesión')
 
   return (
-    <ProductContext.Provider value={{ products, setProducts, productCar, setProductCar, removeProductFromCar, pagoTotal, setPagoTotal, cateProduct, setCateProduct, filterPro, setFilterPro }}>
+    <ProductContext.Provider value={{ products, setProducts, productCar, setProductCar, removeProductFromCar, pagoTotal, setPagoTotal, cateProduct, setCateProduct, filterPro, setFilterPro, user, setUser }}>
       {children}
     </ProductContext.Provider>
   );

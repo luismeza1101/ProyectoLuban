@@ -1,7 +1,16 @@
 import { Link } from "react-router-dom";
+import { ProductContext } from "../context/Contexto";
+import { useContext } from "react";
 
 
 const LinksHeader: React.FC = () => {
+  const productContext = useContext(ProductContext);
+
+  if (!productContext) {
+    return null;
+  }
+
+  const { user } = productContext;
 
   return (
     <div className={`enlaces enlaces-desktop`} id="navbarSupportedContent">
@@ -33,7 +42,7 @@ const LinksHeader: React.FC = () => {
       <li className="lista__item lista__item--account">
         {/* Imagen que despliega las opciones de cuenta */}
         <Link to={'/login'} className="lista__link">
-        Iniciar Sesión
+        {user}
         </Link>
       </li>
     </ul>

@@ -1,13 +1,16 @@
 import "../StyleSheets/Login.css"; // Importar estilos CSS
 import Footer from "../components/Footer";
 import { signup } from "../../../PF_Backend/api";
-import { useState } from "react";
+import { useContext, useRef, useState } from "react";
+import Header from "../components/Header";
+import { ProductContext } from "../context/Contexto";
 
 const Login: React.FC = () => {
   // Estados para almacenar los datos del usuario
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
+  const user = useRef<HTMLInputElement>(null)
 
   // Funcion para registrar nuevos usuarios
   const handleSignup = async () => {
@@ -21,8 +24,17 @@ const Login: React.FC = () => {
     }
   };
 
+  const productContext = useContext(ProductContext);
+
+  if (!productContext) {
+    return null;
+  }
+
+  const { setUser } = productContext;
+
   return (
     <>
+    <Header/>
       <div className="containerLogin">
         <div className="form-container">
           <div className="login-container">
@@ -33,6 +45,7 @@ const Login: React.FC = () => {
               onSubmit={(e) => {
                 e.preventDefault();
                 handleSignup();
+                setUser(user.current!.value)
               }}
             >
               <p>
@@ -43,6 +56,7 @@ const Login: React.FC = () => {
                   name="email"
                   onChange={(e) => setEmail(e.target.value)}
                   required
+                  ref={user}
                 />
               </p>
 

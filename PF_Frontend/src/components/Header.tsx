@@ -4,9 +4,11 @@ import LinksHeader from "./LinksHeader";
 import { useState } from "react";
 import LinksMobile from "./LinksMobile";
 
+
 const Header: React.FC = () => {
 
   const [showLinks, setShowLinks] = useState(false)
+ 
 
   return (
     // Header de la pagina
@@ -17,7 +19,7 @@ const Header: React.FC = () => {
           <img src="/logo.png" alt="LOGO" className="nav__logo"/>
         </Link>
         {/* Barra de busqueda */}
-        {/* <form className="barSearch" role="search">
+        <form className="barSearch" role="search">
           <i className="bi bi-search"></i>
           <input
             className="me-2 barSearch__input"
@@ -25,7 +27,7 @@ const Header: React.FC = () => {
             placeholder="Search"
             aria-label="Search"
           />
-        </form> */}
+        </form>
         {/* Lista de enlaces */}
         <LinksHeader/>
         {/* Boton de despliege, cuando sea una pantalla mas pequeña */}

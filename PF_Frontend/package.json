@@ -12,13 +12,17 @@
   "dependencies": {
     "algoliasearch": "^4.24.0",
     "bootstrap-icons": "^1.11.3",
+    "instantsearch.js": "^4.72.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-instantsearch-dom": "^6.40.4",
     "react-router-dom": "^6.23.1"
   },
   "devDependencies": {
+    "@types/algoliasearch": "^4.0.0",
     "@types/react": "^18.2.66",
     "@types/react-dom": "^18.2.22",
+    "@types/react-instantsearch-dom": "^6.12.8",
     "@typescript-eslint/eslint-plugin": "^7.2.0",
     "@typescript-eslint/parser": "^7.2.0",
     "@vitejs/plugin-react": "^4.2.1",

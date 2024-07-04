@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import LinksHeader from "./LinksHeader";
 import { useState } from "react";
 import LinksMobile from "./LinksMobile";
-
+import Search from "./Algolia";
 
 const Header: React.FC = () => {
 
@@ -19,15 +19,9 @@ const Header: React.FC = () => {
           <img src="/logo.png" alt="LOGO" className="nav__logo"/>
         </Link>
         {/* Barra de busqueda */}
-        <form className="barSearch" role="search">
-          <i className="bi bi-search"></i>
-          <input
-            className="me-2 barSearch__input"
-            type="search"
-            placeholder="Search"
-            aria-label="Search"
-          />
-        </form>
+        <div className="barSearch">
+          <Search/>
+        </div>
         {/* Lista de enlaces */}
         <LinksHeader/>
         {/* Boton de despliege, cuando sea una pantalla mas pequeña */}

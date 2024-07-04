@@ -1,0 +1,50 @@
+.ais-SearchBox-form input{
+  width: 100%;
+}
+.listData-hiden ul{
+  display: none;
+}
+.listData-show ul{
+  display: block;
+}
+.listData ul{
+  width: 100%;
+  list-style: none;
+  position: absolute;
+  z-index: 100;
+  width: 480px;
+  top: 40px;
+  left: -40px; 
+}
+.ais-SearchBox{
+  width: 100%;
+  outline: 2px solid #777;
+  padding: 5px;
+  border-radius: 10px;
+}
+.hit-item {
+  border: 1px solid #ccc;
+  background-color: #ccc;
+  padding: 16px;
+  margin: 7px;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.hit-name {
+  font-size: 1em;
+  color: #000;
+}
+
+.ais-Hits-item {
+  height: 30px;
+}
+.ais-SearchBox-reset{
+  display: none;
+}
+.ais-SearchBox-submit{
+  display: none;
+}

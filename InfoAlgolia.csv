@@ -1,0 +1,25 @@
+id,nombre,descripcion,precio,stock,categoria_id,imagen_url
+27b631fc-34da-11ef-a0c5-f46add2b7302,"Mesa Isla de cocina","Mesa de cocina con base de madera y tablero postformado para cocinar y comer",899.99,10,1,mesaIslaCocina.png
+27b63813-34da-11ef-a0c5-f46add2b7302,"Mueble para tv","mueble para tv movible de madera tornillo espacios libres para dvd y videojuegos y  2 cajones",499.99,20,3,muebleTV.png
+27b639e5-34da-11ef-a0c5-f46add2b7302,"Repostero de madera moderno","Hecho de madera cedro consta de 4 puertas con sus respectivas repisas y 2 cajones",2299.99,15,1,reposteroModerno.png
+27b63aa2-34da-11ef-a0c5-f46add2b7302,"Mueble de entretenimiento","Hecho de madera Mohena. Mueble empotrado parte baja repisa y parte alta sistema de luces",1499.99,12,3,muebleEntretenimiento.png
+27b63b1f-34da-11ef-a0c5-f46add2b7302,"Juego de sillones","Sillón de 4 asientos en forma de (L)  tapizado en cuero color almendra y esponja cebra",2199.99,17,3,sillones.png
+27b63b9b-34da-11ef-a0c5-f46add2b7302,"Alacena y juego de comedor","Alacena de melamina tipo caoba con puertas cerezo y repisas con vidrio corredizo junto a mesa de madera tornillo con 4 sillas",2999.99,15,1,alacenaComedor.png
+27b63c2a-34da-11ef-a0c5-f46add2b7302,"Mueble de baño y espejo","Mueble de baño empotrado hecho en madera mohera y espejo de madera con marcos color blanco",699.99,15,4,muebleBañoEspejo.png
+27b63c9f-34da-11ef-a0c5-f46add2b7302,"Mueble de baño minimalista","Mueble de baño empotrado hecho en triplay fenolico pintado en pintura blanco humo uretano",499.99,15,4,muebleBañoMinimalista.png
+27b63d1a-34da-11ef-a0c5-f46add2b7302,"Mueble de baño","Mueble de baño madera cedro  con 6 cajones con mesa de granito blanco",799.99,11,4,muebleBaño.png
+27b63d8d-34da-11ef-a0c5-f46add2b7302,"Repostero de madera","repostero parte alta y baja de madera tornillo con puertas batientes",2799.99,15,1,repostero.png
+27b63e04-34da-11ef-a0c5-f46add2b7302,"Repostero de madera clasico","hecho en madera huayruro con 8 puertas en la parte baja y 6 puertas con vidrio en la parte alta y 4 cajones",7999.99,15,1,reposteroClasico.png
+27b63e80-34da-11ef-a0c5-f46add2b7302,"Mueble de baño moderno","Hecho en melamina almendra de 4 puertas y 3 cajones",599.99,15,4,muebleBañoModerno.png
+27b63f27-34da-11ef-a0c5-f46add2b7302,"Mueble de entretenimiento minimalista","Modelo minimalista hecho en madera cedro con laqueado color natural",799.99,15,3,muebleMinimalista.png
+27b63ff7-34da-11ef-a0c5-f46add2b7302,"Repostero de melamina","Mesa de cocina con base de madera y tablero postformado para cocinar y comer",899.99,15,1,reposteroMelamina.png
+27b64084-34da-11ef-a0c5-f46add2b7302,"Mesa de centro","hecho en madera tornillo y laqueado en color natural cuenta con dos cajones pequeños",399.99,15,1,mesaCentro.png
+27b640fb-34da-11ef-a0c5-f46add2b7302,"Mueble de baño de madera","Madera selecta de cedro laqueado con barniz marino y un espejo con marco ovalado de madera de cedro",499.99,15,4,muebleBañoMadera.png
+27b64174-34da-11ef-a0c5-f46add2b7302,"Centro de entretenimiento","De estilo vintage con un amplio espacios para repisas pintado en blanco humo y es de madera tornillo",799.99,15,3,centroEntretenimiento.png
+27b641fa-34da-11ef-a0c5-f46add2b7302,"Centro de entretenimiento moderno","Estilo moderno de madera Mohena pintado con pintura uretano con dos tonalidades negro y blanco",749.99,15,3,centroEntretenimientoModerno.png
+27b64271-34da-11ef-a0c5-f46add2b7302,"centro de entretenimiento madera","Hecho en madera mohena con amplios espacio para fotos adornos etc. laqueado al natural con puertas pintadas en azul oscuro",1199.99,15,3,centroEntretenimientoMadera.png
+27b642ec-34da-11ef-a0c5-f46add2b7302,"Mueble de baño vintage","Hecho  en madera mohena de cuatro cajones y una repisa empotrada en la parte superior",849.99,15,4,muebleBañoVintage.png
+27b64365-34da-11ef-a0c5-f46add2b7302,"Mueble de baño futurista","mueble de baño tipo mesa con repisa para toallas finamente laqueado y de tono brillante hecho en madera mohena",1199.99,15,4,muebleBañoFurutista.png
+27b643e0-34da-11ef-a0c5-f46add2b7302,"Cama madera King","Tarima de barandas anchas hecho en madera cedro con cabecera de madera cedro laqueado en poliesterde alto brillo",3500.00,15,2,camaMaderaKing.png
+27b64471-34da-11ef-a0c5-f46add2b7302,"Cama madera","hecha de madera mohena de patas altas  incluido dos veladores y cabecera plana laqueado con poliester",3499.99,15,2,camaMadera.png
+27b644e5-34da-11ef-a0c5-f46add2b7302,"Mueble de entretenimiento madera","Mueble de tipo cerrado con 3 cajones grandes hecho en madera tornillo y pintado en blanco humo",899.99,15,3,muebleEntretenimientoMadera.png

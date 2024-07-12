@@ -1,5 +1,5 @@
 import React, { createContext, useState, ReactNode } from 'react';
-import { Product, CarProduct} from '../types';
+import { Product, CarProduct, User} from '../types';
 
 interface ProductContextType {
   products: Product[];
@@ -13,8 +13,11 @@ interface ProductContextType {
   setCateProduct: (cate: number) => void
   filterPro: Product[] 
   setFilterPro: (filter: Product[]) => void
-  user: string
-  setUser: (name :string) => void
+  isLogged: boolean
+  setIsLogged: (logged: boolean) => void
+  userData: User | null
+  setUserData: (data: User | null) => void
+  logout: () => void
 }
 
 export const ProductContext = createContext<ProductContextType | undefined>(undefined);
@@ -30,10 +33,18 @@ export const ProductProvider: React.FC<{ children: ReactNode }> = ({ children })
     const deletePrice = price * cantidad;
     setPagoTotal(pagoTotal - deletePrice)
   };
-  const [user, setUser] = useState('Iniciar Sesión')
+  const [isLogged, setIsLogged] = useState(false);
+  const [userData, setUserData] = useState<User | null>(null);
+  const logout = () => {
+    // Lógica para limpiar los datos de usuario y establecer isLogged a false
+    setUserData(null);
+    setIsLogged(false);
+    // También podrías limpiar el token del localStorage si lo estás usando
+    localStorage.removeItem('token');
+  };
 
   return (
-    <ProductContext.Provider value={{ products, setProducts, productCar, setProductCar, removeProductFromCar, pagoTotal, setPagoTotal, cateProduct, setCateProduct, filterPro, setFilterPro, user, setUser }}>
+    <ProductContext.Provider value={{ products, setProducts, productCar, setProductCar, removeProductFromCar, pagoTotal, setPagoTotal, cateProduct, setCateProduct, filterPro, setFilterPro, isLogged, setIsLogged, userData, setUserData, logout}}>
       {children}
     </ProductContext.Provider>
   );

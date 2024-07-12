@@ -4,6 +4,9 @@ const mysql = require('mysql2'); // Conectar con la base de datos
 const cors = require('cors'); // Permite que tu servidor acepte solicitudes de recursos desde dominios diferentes al propio
 const bodyParser = require('body-parser'); // Middleware que se usa para analizar los cuerpos de las solicitudes entrantes en diferentes formatos 
 const nodemailer = require('nodemailer'); // Enviar correos electrónicos desde tu aplicación 
+const bcrypt = require('bcryptjs'); //Hashing de contraseñas
+const { v4: uuidv4 } = require('uuid'); // Generar IDs aleatorias
+const jwt = require('jsonwebtoken');// Generar y verificar tokens de sesión
 const app = express();
 const port = 3001;
 
@@ -13,15 +16,135 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
 
-// Configurar nodemailer con tus credenciales de correo electrónico
-const transporter = nodemailer.createTransport({
-  host: "smtp.gmail.com",
-  port: 587,
-  secure: false,
-  auth: {
-    user: "tiendaluban@gmail.com",
-    pass: "egso lrxf cfvz smcw",
-  },
+// Endpoint para registrar usuarios
+app.post('/api/register', async (req, res) => {
+  const { name, country, adrees, email, password } = req.body;
+
+  if (!name || !adrees || !country || !password || !email) {
+    return res.status(400).json({ message: 'Todos los campos son obligatorios' });
+  }
+
+  try {
+    // Generar un hash de la contraseña
+    const salt = await bcrypt.genSalt(10);
+    const hashedPassword = await bcrypt.hash(password, salt);
+
+    // Generar un UUID para el id
+    const id = uuidv4();
+
+    const insertQuery = 'INSERT INTO Clientes (id, nombre, pais, direccion, email, contraseña) VALUES (?, ?, ?, ?, ?, ?)';
+    connection.query(insertQuery, [id, name, country, adrees, email, hashedPassword], (err, result) => {
+      if (err) {
+        console.error('Error al guardar usuario:', err);
+        return res.status(500).json({ message: 'Error interno del servidor', error: err.message });
+      }
+      res.status(200).json({ message: 'Usuario registrado correctamente' });
+    });
+  } catch (error) {
+    console.error('Error al registrar el usuario:', error);
+    res.status(500).json({ message: 'Error interno del servidor' });
+  }
+});
+
+// Endpoint para iniciar sesión
+app.post('/api/signIn', (req, res) => {
+  const { email, password } = req.body;
+
+  if (!email || !password) {
+    return res.status(400).json({ message: 'Email y contraseña son requeridos' });
+  }
+
+  const query = 'SELECT contraseña, email, id FROM Clientes WHERE email = ?';
+  connection.query(query, [email], async (error, results) => {
+    if (error) {
+      console.error('Error al verificar usuario:', error);
+      return res.status(500).json({ message: 'Error interno del servidor' });
+    }
+    if (results.length === 0) {
+      return res.status(401).json({ message: 'Usuario no encontrado' });
+    }
+
+    const user = results[0];
+
+    if (!user.contraseña) {
+      return res.status(500).json({ message: 'El usuario no tiene una contraseña establecida' });
+    }
+
+    // Verificar la contraseña
+    try {
+      const isPasswordValid = await bcrypt.compare(password, user.contraseña);
+      if (!isPasswordValid) {
+        return res.status(401).json({ message: 'Contraseña incorrecta' });
+      }
+    } catch (err) {
+      console.error('Error al comparar las contraseñas:', err);
+      return res.status(500).json({ message: 'Error interno del servidor' });
+    }
+
+    // Generar un token de sesión
+    const token = jwt.sign({ id: user.id}, 'secret_key', { expiresIn: '1h' });
+
+    res.status(200).json({ message: 'Inicio de sesión exitoso', token });
+  });
+});
+
+// Middleware para verificar el token
+function verifyToken(req, res, next) {
+  // Obtener el token desde los headers de la solicitud
+  const bearerHeader = req.headers['authorization'];
+
+  if (typeof bearerHeader !== 'undefined') {
+    // Formato del token: Bearer <token>
+    const bearerToken = bearerHeader.split(' ')[1];
+
+    // Verificar el token usando la clave secreta
+    jwt.verify(bearerToken, 'secret_key', (err, decoded) => {
+      if (err) {
+        // Si hay un error en la verificación del token
+        console.error('Error en verificación de token:', err);
+        res.sendStatus(403); // Forbidden
+      } else {
+        // Si la verificación es exitosa, guardar el ID del usuario en la solicitud
+        req.user = decoded;
+        next(); // Continuar con la solicitud
+      }
+    });
+  } else {
+    // Si no se proporcionó un token en los headers
+    res.sendStatus(401); // Unauthorized
+  }
+}
+
+
+// Endpoint para obtener datos del usuario autenticado
+app.get('/api/user/data', verifyToken, async (req, res) => {
+  const userId = req.user.id; // ID del usuario obtenido del token
+
+  const query = 'SELECT id, nombre, pais, direccion, email FROM Clientes WHERE id = ?';
+  connection.query(query, [userId], (error, results) => {
+    if (error) {
+      console.error('Error al obtener datos del usuario:', error);
+      return res.status(500).json({ message: 'Error interno del servidor' });
+    }
+
+    if (results.length === 0) {
+      return res.status(404).json({ message: 'Usuario no encontrado' });
+    }
+
+    // Obtener los datos del primer resultado (suponiendo que id es único)
+    const userData = results[0];
+
+    // Aquí defines qué datos del usuario quieres devolver en la respuesta
+    const responseData = {
+      id: userData.id,
+      name: userData.nombre,
+      country: userData.pais,
+      adrees: userData.direccion,
+      email: userData.email,
+    };
+
+    res.status(200).json(responseData);
+  });
 });
 
 // Función para enviar correo electrónico
@@ -77,24 +200,6 @@ connection.connect(error => {
   console.log('Connected to the MySQL database.');
 });
 
-
-// Endpoint para guardar los datos de inicio de sesión
-app.post('/api/signup', (req, res) => {
-  const { password, email } = req.body;
-
-  if (!password || !email) {
-    return res.status(400).json({ message: 'Todos los campos son obligatorios' });
-  }
-
-  const insertQuery = 'INSERT INTO Clientes (contraseña, email) VALUES (?, ?)';
-  connection.query(insertQuery, [password, email], (err, result) => {
-    if (err) {
-      console.error('Error al guardar usuario:', err); // Imprime el error en la consola del servidor
-      return res.status(500).json({ message: 'Error interno del servidor', error: err.message }); // Devuelve el mensaje de error al cliente
-    }
-    res.status(200).json({ message: 'Usuario registrado correctamente' });
-  });
-});
 
 // Endpoint para obtener todos los productos
 app.get('/api/products', (req, res) => {

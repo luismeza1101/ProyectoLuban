@@ -1,14 +1,16 @@
 const API_URL = 'http://localhost:3001/api';
 
+
+
 // Hacer solicitud para registrar usuarios
-export const signup = async (password: string, email: string) => {
+export const registerUser = async (name: string, country: string, adrees: string, email: string, password: string) => {
   try {
-    const response = await fetch(`${API_URL}/signup`, {
+    const response = await fetch(`${API_URL}/register`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ password, email }),
+      body: JSON.stringify({ name, country, adrees, email, password  }),
     });
     if (!response.ok) {
       throw new Error('Error al registrar usuario');
@@ -19,6 +21,61 @@ export const signup = async (password: string, email: string) => {
     throw error;
   }
 };
+
+// Verificar inicio de sesión
+export const signIn = async (email: string, password: string) => {
+  try {
+    const response = await fetch(`${API_URL}/signIn`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        email,
+        password,
+      }),
+    });
+
+    const data = await response.json();
+
+    if (response.ok) {
+      console.log(data.message);
+      localStorage.setItem('token', data.token); // Almacenar el token en localStorage
+      return { message: data.message, token: data.token }; // Devuelve el mensaje y el token
+    } else {
+      console.error(data.message);
+      return { message: data.message }; // Devuelve el mensaje de error
+    }
+  } catch (error) {
+    console.error('Error al iniciar sesión:', error);
+    return { message: 'Error al iniciar sesión' }; // Devuelve un mensaje de error genérico
+  }
+};
+
+
+export const fetchWithAuth = async () => {
+  const token = localStorage.getItem('token');
+  if (!token) {
+    throw new Error('No token found');
+  }
+
+  try {
+    // Hacer la solicitud al servidor con el token incluido en los headers
+    const response = await fetch(`${API_URL}/user/data`, {
+      method: 'GET',
+      headers: {
+        Authorization: `Bearer ${token}`,
+        'Content-Type': 'application/json',
+      },
+    });
+    return response
+  } catch (error) {
+    // Manejar errores de red u otros errores
+    console.error('Error al realizar la solicitud:', error);
+    throw error   
+  }
+};
+
 
 // Hacer solicitud de los productos
 export const getProducts = async () => {

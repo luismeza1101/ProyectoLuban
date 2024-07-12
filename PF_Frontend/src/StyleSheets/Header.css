@@ -1,99 +1,97 @@
 .nav{
-  height: 70px; 
+    width: 100vw;
+    height: 90px;
 }
-.containerNav{
-  display: flex;
-  width: 95%;
-  margin: 0 auto;
-  justify-content: space-between;
-  align-items: center;
-}
-.barSearch{
-  position: relative;
-  width: 30%;
-}
-
-/* Estilos generales de los iconos */
-.bi {
-  cursor: pointer;
-}
-/* Tamaño del icono del carrito de compras */
-.bi-cart3 {
-  font-size: 20px;
-}
-/* Tamaño de la imagen de usuario */
-.lista__user {
-  width: 40px;
-  border-radius: 50%;
-}
-/* Posicionar los links */
-.enlaces{
-  height: 100%;
-}
-.lista{
-  display: flex;
-  gap: 40px;
-  list-style: none;
-  height: 100%;
-  align-items: center;
-}
-.lista__link{
-  color: #000;
-  text-decoration: none;
-}
-/* Ocultar las opciones para el modo mobile */
-.enlaces-mobile{
-  display: none;
-}
-
-/* Cursor para opciones de cuenta */
-.lista__link--account{
-  cursor: pointer;
-}
-.lista__item--account{
-  position: relative;
-}
-
-/* Estilos del boton para mostrar los links */
-.navbar-toggler{
-  display: none;
-  font-size: 1.5em;
-}
-.nav__logo{
-  height: 50px;
-  border-radius: 30%;
-}
-
-/* Estilos cuando la pantalla tiene menos de  1140px*/
-
-@media screen and (max-width: 1140px) {
-  /* Mostar el boton de despliegue de opciones */
-  .navbar-toggler{
-    display: block;
-  }
-  /* Ocultar la lista de opciones del modo desktop */
-  .enlaces-desktop{
+.navbar-toggler {
     display: none;
-  }
-  /* Posicionar la lista de opciones desplegable */
-  .enlaces-mobile{
+    background: none;
+    border: none;
+    color: #000;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.containerNav{
+    width: 90%;
+    margin: 0 auto;
     display: flex;
-    position: fixed;
-    background-color: #F8F9FA;
-    z-index: 100;
-    right: 0;
-    top: 0;
+    align-items: center;
+    justify-content: space-between;
+}
+.nav__item--logo img{
+    height: 4rem;
+    border-radius: 2px;
+}
+.nav__item--searchBar{
+    width: 30%;
+}
+
+.links{
     height: 100%;
-    transform: translateX(100%);
-    transition-duration: .5s;
-    border-left: 1px solid #000;
-  }
-  .showLinks{
-    transform: translateX(0);
-  }
+    display: flex;
+    list-style: none;
+    gap: 30px;
+    align-items: center;
+    margin-bottom: 0;
+    padding-left: 0;
 }
-@media screen and (max-width: 775px) {
-  .barSearch{
-    max-width: 250px;
-  }
+
+.links__link{
+    color: #000;
+    text-decoration: none;
 }
+.bi-cart3{
+    font-size: 1.3rem;
+}
+.item__user img{
+    width: 40px;
+}
+.item__user{
+    position: relative;
+    cursor: pointer;
+}
+@media screen and (max-width: 1190px) {
+    .navbar-toggler{
+        display: block;
+    }
+    .nav__item--searchBar{
+        width: 50%;
+    }
+    .links{
+        display: none;
+    }
+    .links {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: 290px;
+      height: 100%;
+      background-color: #fff;
+      transition: 0.3s;
+      z-index: 100;
+    }
+    .btn--close{
+        position: absolute;
+        font-size: 20px;
+        cursor: pointer;
+        top: 5%;
+        right: 12%;
+    }
+    .links.show {
+      right: 0;
+    }
+  
+    .links__link {
+      color: #000;
+      padding: 15px;
+      font-size: 1.2rem;
+    }
+    .cuenta{
+        right: -100px;
+    }
+} 
+  
+  

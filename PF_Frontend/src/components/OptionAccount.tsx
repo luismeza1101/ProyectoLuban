@@ -1,9 +1,19 @@
+import { useContext } from 'react';
 import '../StyleSheets/OptionAccount.css'
+import { ProductContext } from '../context/Contexto';
 
 const OptionAccount = () => {
+  const productContext = useContext(ProductContext);
+
+  if (!productContext) {
+    return null;
+  }
+
+  const {logout} = productContext;
+
   return (
     // Modal de las opciones de la cuenta
-    <article className='cuenta container'>
+    <section className='cuenta container'>
       <h5 className='cuenta__titulo'>Opciones de cuenta</h5>
       {/* Sección donde estan todas las opciones */}
       <div className='opciones'>
@@ -19,13 +29,13 @@ const OptionAccount = () => {
             </a>
           </li>
           <li className='listaOp__item'>
-            <a href="">
+            <a href="" onClick={() => logout()}>
               <i className="bi bi-box-arrow-right"></i>Cerrar sesion
             </a>
           </li>
         </ul>
       </div>
-    </article>
+    </section>
   );
 };
 

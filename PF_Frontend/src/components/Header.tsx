@@ -1,42 +1,68 @@
-import "../StyleSheets/Header.css";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
-import LinksHeader from "./LinksHeader";
-import { useState } from "react";
-import LinksMobile from "./LinksMobile";
 import Search from "./Algolia";
+import User from "./User";
+import RegisterUser from "./RegisterUser";
+import { ProductContext } from "../context/Contexto";
+import "../StyleSheets/Header.css";
 
-const Header: React.FC = () => {
+const HeaderFinal = () => {
+  const [showLinks, setShowLinks] = useState(false);
+  const productContext = useContext(ProductContext);
 
-  const [showLinks, setShowLinks] = useState(false)
- 
+  if (!productContext) {
+    return null;
+  }
+
+  const { isLogged } = productContext;
 
   return (
-    // Header de la pagina
     <nav className="nav">
       <div className="containerNav">
-        {/* Logo */}
-        <Link className="navbar-brand" to="/">
-          <img src="/logo.png" alt="LOGO" className="nav__logo"/>
+        <Link className="nav__item nav__item--logo" to="/">
+          <img src="/logo.png" alt="LOGO" />
         </Link>
-        {/* Barra de busqueda */}
-        <div className="barSearch">
-          <Search/>
+        <div className="nav__item nav__item--searchBar">
+          <Search />
         </div>
-        {/* Lista de enlaces */}
-        <LinksHeader/>
-        {/* Boton de despliege, cuando sea una pantalla mas pequeña */}
+        <ul className={`links ${showLinks ? "show" : ""}`}>
+          <li className="links__option">
+            <Link className="links__link" to="/aboutUs">
+              Sobre Nosotros
+            </Link>
+          </li>
+          <li className="links__option">
+            <Link className="links__link" to="/categories">
+              Categorias
+            </Link>
+          </li>
+          <li className="links__option">
+            <Link className="links__link" to="/help">
+              Ayuda
+            </Link>
+          </li>
+          <li className="links__option links__option--car">
+            <Link className="links__link" aria-disabled="true" to="/carShop">
+              <i className="bi bi-cart3"></i>
+            </Link>
+          </li>
+          {isLogged ? <User /> : <RegisterUser />}
+          {showLinks ? <i
+            className="bi bi-x-lg btn--close"
+            onClick={() => setShowLinks(false)}
+          ></i> : null}
+          
+        </ul>
         <button
           className="navbar-toggler"
           type="button"
-          onClick={() => setShowLinks(true)}
+          onClick={() => setShowLinks(!showLinks)}
         >
           <i className="bi bi-list"></i>
         </button>
       </div>
-      <LinksMobile size={`${showLinks ? 'showLinks' : ''}`} setShowLinks={setShowLinks}/>
     </nav>
   );
 };
 
-export default Header;
-
+export default HeaderFinal;

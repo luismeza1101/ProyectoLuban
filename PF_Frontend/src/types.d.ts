@@ -52,3 +52,11 @@ export interface ProOferta{
   descuento: number,
   imagen_url: string
 }
+
+export interface User{
+  id: string
+  nombre: string
+  pais: string
+  direccion: string
+  email: string
+}

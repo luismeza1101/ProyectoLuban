@@ -76,6 +76,33 @@ export const fetchWithAuth = async () => {
   }
 };
 
+export const modifyUser = async (id: string | undefined, newName: string, newAddress: string, newCountry: string) => {
+  try {
+    const response = await fetch(`${API_URL}/modifyUser`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        id,
+        nombre: newName,
+        direccion: newAddress,
+        pais: newCountry
+      })
+    });
+
+    if (!response.ok) {
+      const errorData = await response.json();
+      throw new Error(errorData.message || 'Error updating user');
+    }
+
+    const data = await response.json();
+    alert(data.message);
+  } catch (error) {
+    console.error('Error:', error);
+    alert('Hubo un error');
+  }
+};
 
 // Hacer solicitud de los productos
 export const getProducts = async () => {

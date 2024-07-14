@@ -18,6 +18,8 @@ interface ProductContextType {
   userData: User | null
   setUserData: (data: User | null) => void
   logout: () => void
+  isModifyOpen: boolean
+  setIsModifyOpen: ( modal: boolean) => void
 }
 
 export const ProductContext = createContext<ProductContextType | undefined>(undefined);
@@ -36,15 +38,14 @@ export const ProductProvider: React.FC<{ children: ReactNode }> = ({ children })
   const [isLogged, setIsLogged] = useState(false);
   const [userData, setUserData] = useState<User | null>(null);
   const logout = () => {
-    // Lógica para limpiar los datos de usuario y establecer isLogged a false
     setUserData(null);
     setIsLogged(false);
-    // También podrías limpiar el token del localStorage si lo estás usando
     localStorage.removeItem('token');
   };
+  const [isModifyOpen, setIsModifyOpen] = useState(false);
 
   return (
-    <ProductContext.Provider value={{ products, setProducts, productCar, setProductCar, removeProductFromCar, pagoTotal, setPagoTotal, cateProduct, setCateProduct, filterPro, setFilterPro, isLogged, setIsLogged, userData, setUserData, logout}}>
+    <ProductContext.Provider value={{ products, setProducts, productCar, setProductCar, removeProductFromCar, pagoTotal, setPagoTotal, cateProduct, setCateProduct, filterPro, setFilterPro, isLogged, setIsLogged, userData, setUserData, logout, isModifyOpen, setIsModifyOpen}}>
       {children}
     </ProductContext.Provider>
   );

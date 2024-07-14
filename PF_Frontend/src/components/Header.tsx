@@ -6,7 +6,7 @@ import RegisterUser from "./RegisterUser";
 import { ProductContext } from "../context/Contexto";
 import "../StyleSheets/Header.css";
 
-const HeaderFinal = () => {
+const Header = () => {
   const [showLinks, setShowLinks] = useState(false);
   const productContext = useContext(ProductContext);
 
@@ -65,4 +65,4 @@ const HeaderFinal = () => {
   );
 };
 
-export default HeaderFinal;
+export default Header;

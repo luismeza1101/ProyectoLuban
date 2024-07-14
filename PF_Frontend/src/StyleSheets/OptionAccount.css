@@ -16,23 +16,26 @@
     font-size: 1.2rem;
 }
 /* Estilos de la lista de las opciones */
-.listaOp{
+.dataUser{
     list-style: none;
-    display: grid;
-    gap: 10px;
-    padding: 0;
-    margin-top: 10px;
-}
-.listaOp__item{
-    padding: 5px 10px;
-    border-radius: 5px;
-}
-.listaOp__item a{
     display: flex;
-    gap: 10px;
-    color: #000;
-    text-decoration: none;
+    flex-direction: column;
+    padding: 0; 
 }
-.listaOp__item:hover{
-    background-color: #eee;
+.dataUser__item--email{
+    color: #ccc;
+}
+.opcionesUser a{ 
+    color: #000;
+}
+.opcionesUser{
+    margin-top: 5px;
+}
+.opcionesUser__action{
+    border: 1px solid #000;
+    padding: 0 5px;
+}
+.opcionesUser__action:hover{
+    background-color: #ccc;
+    border-color: #ccc;
 }

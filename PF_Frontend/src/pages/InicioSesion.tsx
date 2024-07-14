@@ -2,7 +2,7 @@ import "../StyleSheets/Login.css";
 import Footer from "../components/Footer";
 import { useState, useContext } from "react";
 import Header from "../components/Header";
-import {  signIn } from "../../../PF_Backend/api";
+import { signIn } from "../../../PF_Backend/api";
 import { ProductContext } from "../context/Contexto";
 import { getUserData } from "../fuctions";
 
@@ -33,7 +33,6 @@ const Login: React.FC = () => {
     }
   };
 
- 
 
   return (
     <>

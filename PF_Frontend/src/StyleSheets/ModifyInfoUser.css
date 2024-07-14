@@ -1,0 +1,47 @@
+.modal-open {
+    overflow: hidden;
+  }
+  
+.modalModifyOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modalModify{
+    position: absolute;
+    top: 30%;
+    background-color: #fff;
+    border: 2px solid #000;
+    width: 30%;
+    left: 35%;
+    padding: 20px;
+    border-radius: 10px;
+}
+.modalModify__actu{
+    color: #aaa;
+}
+.formModify{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-bottom: 10px;
+}
+.formModify input{
+    outline: 2px solid #000;
+    border-radius: 2px;
+}
+.modalModify__close{
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 20px;
+    cursor: pointer;
+}

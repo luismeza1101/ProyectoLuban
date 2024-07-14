@@ -55,8 +55,8 @@ export interface ProOferta{
 
 export interface User{
   id: string
-  nombre: string
-  pais: string
-  direccion: string
+  name: string
+  country: string
+  adrees: string
   email: string
 }

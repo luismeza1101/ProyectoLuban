@@ -147,6 +147,31 @@ app.get('/api/user/data', verifyToken, async (req, res) => {
   });
 });
 
+// Middleware para validar datos de entrada
+function validateUserData(req, res, next) {
+  const { id, nombre, pais, direccion } = req.body;
+  if (!id || !nombre || !pais || !direccion) {
+    return res.status(400).json({ message: 'All fields are required' });
+  }
+  next();
+}
+
+app.put('/api/modifyUser', validateUserData, (req, res) => {
+  const { id, nombre, direccion, pais } = req.body;
+  const query = 'UPDATE Clientes SET nombre = ?, pais = ?, direccion = ? WHERE id = ?';
+
+  connection.query(query, [nombre, pais, direccion, id], (err, results) => {
+    if (err) {
+      return res.status(500).json({ message: 'Database error', error: err.message });
+    }
+    if (results.affectedRows === 0) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+    res.status(200).json({ message: 'User updated successfully' });
+  });
+});
+
+
 // Función para enviar correo electrónico
 const sendMail = async (from, to, subject, text) => {
   try {

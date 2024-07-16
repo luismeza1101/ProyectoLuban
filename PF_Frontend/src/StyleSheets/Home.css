@@ -4,6 +4,8 @@
     height: 80vh;
     display: flex;
     justify-content: center;
+    margin: 30px 0;
+    gap: 20px;
 }
 
 .diseño__image{

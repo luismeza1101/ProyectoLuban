@@ -5,6 +5,13 @@ export type Preguntas = {
     respuesta: string;
   };
 
+// Estructura de las reseñas de clientes
+export type Reseñas = {
+  nombre: string
+  descripcion: string
+  imagen: string
+}
+
 // Estructura de la informacion de cada producto 
 export type Producto = {
   id : string

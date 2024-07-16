@@ -1,8 +1,6 @@
-import "../StyleSheets/Login.css"; // Importar estilos CSS
-import Footer from "../components/Footer";
+import "../StyleSheets/Register.css"; 
 import { registerUser } from "../../../PF_Backend/api";
 import { useState } from "react";
-import Header from "../components/Header";
 
 const Register: React.FC = () => {
   // Estados para almacenar los datos del usuario
@@ -26,12 +24,11 @@ const Register: React.FC = () => {
 
   return (
     <>
-    <Header/>
       <div className="containerLogin">
         <div className="form-container">
           <div className="login-container">
-            {/* <h2>Bienvenido</h2>
-            <p>Registrese</p> */}
+            <h2>Bienvenido</h2>
+            <p>Registrese</p>
 
             <form
               onSubmit={handleRegisters}
@@ -83,16 +80,9 @@ const Register: React.FC = () => {
                   required
                 />
               </p>
-{/* 
-              <div className="options">
-                <div>
-                  Recuerdame <input type="checkbox" name="remeberme" id="" />
-                </div>
-              </div> */}
-
               <p>
                 <input
-                  className="btn btn-login"
+                  className="btn btn-dark"
                   type="submit"
                   value="Registrarse"
                 />
@@ -100,10 +90,8 @@ const Register: React.FC = () => {
               {message && <p>{message}</p>}
             </form>
           </div>
-          <div className="welcome-screen-container"></div>
         </div>
       </div>
-      <Footer />
     </>
   );
 };

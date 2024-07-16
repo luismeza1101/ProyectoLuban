@@ -1,7 +1,5 @@
 import "../StyleSheets/Login.css"; 
-import Footer from "../components/Footer";
 import { useState, useContext } from "react";
-import Header from "../components/Header";
 import { signIn } from "../../../PF_Backend/api";
 import { ProductContext } from "../context/Contexto";
 import { getUserData } from "../fuctions";
@@ -36,7 +34,6 @@ const Login: React.FC = () => {
 
   return (
     <>
-    <Header/>
       <div className="containerLogin">
         <div className="form-container">
           <div className="login-container">
@@ -67,13 +64,6 @@ const Login: React.FC = () => {
                   required
                 />
               </p>
-
-              <div className="options">
-                <div>
-                  Recuerdame <input type="checkbox" name="remeberme" id="" />
-                </div>
-              </div>
-
               <p>
                 <input
                   className="btn btn-login"
@@ -87,7 +77,6 @@ const Login: React.FC = () => {
           <div className="welcome-screen-container"></div>
         </div>
       </div>
-      <Footer />
     </>
   );
 };

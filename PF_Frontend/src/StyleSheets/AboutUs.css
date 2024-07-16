@@ -2,11 +2,11 @@
 
 .furniture-company-section {
     position: relative;
-    height: 700px;
     background-size: cover;
     background-position: center;
     overflow: hidden;
     display: flex;
+    height: 90vh;
   }
   
   .overlay {
@@ -15,7 +15,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    clip-path: polygon(100% 0, 100% 44%, 49% 79%, 0 42%, 0 0);
+    clip-path: polygon(100% 0, 100% 74%, 49% 95%, 0 74%, 0 0);
     background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../../public/AboutUs.jpeg);
 }
   
@@ -23,7 +23,7 @@
     position: relative;
     z-index: 1;
     text-align: center;
-    color: #fff; /* Color de texto */
+    color: #fff;
     padding: 80px 20px;
     height: 100%;
     width: 100%;
@@ -39,4 +39,112 @@
     font-size: 1.5rem;
     line-height: 1.6;
   }
-  
+  .historia{
+    width: 100%;
+    height: 70vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #000;
+}
+.containerHisto{
+  width: 80%; 
+  background-color: #B39C85;
+  border-radius: 20px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 80px;
+  gap: 50px;
+}
+.containerHisto img{
+  height: 90%;
+  border-radius: 10px;
+}
+.historia__titulo{
+    font-size: 4em;
+}
+.historia__info{
+    font-size: 1em;
+}
+
+.objetivos{
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  margin: 150px auto 100px auto;
+  gap: 20px;
+}
+.mision, .vision{
+  max-width: 30%;
+  min-width: 300px;
+  text-align: center;
+  background-color: #2b2b2b;
+  color: #fff;
+  padding: 20px 50px;
+  border-radius: 10px;
+}
+.icon{
+  font-size: 4rem;
+}
+.eco{
+  width: 90%;
+  margin: 30px auto;
+  height: 70vh;
+  display: flex;
+  background-color: #E5E5F7;
+  border-radius: 20px;
+}
+.eco__image{
+  width: 50%;
+}
+
+.eco__image img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 20px 0 0 20px;
+}
+.eco__info{
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  padding: 0 100px;
+  align-items: center;
+  justify-content: center;
+}
+.actions{
+  margin: 30px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+.actions p{
+  display: flex;
+  gap: 10px;
+}
+@media screen and (max-width: 840px) {
+  .eco__image{
+      width: 35%;
+  }
+  .eco__info{
+      width: 70%;
+  }
+}
+@media screen and (max-width:600px) {
+  .eco__image{
+      display: none;
+  }
+  .eco__info{
+      width: 100%;
+  }
+}
+@media screen and (max-width:940px) {
+    .historia{
+        padding: 0 100px;
+    }
+    .historia__info{
+        font-size: 1em;
+    }
+}

@@ -24,6 +24,7 @@ const Header = () => {
         </Link>
         <div className="nav__item nav__item--searchBar">
           <Search />
+          <input type="text" />
         </div>
         <ul className={`links ${showLinks ? "show" : ""}`}>
           <li className="links__option">

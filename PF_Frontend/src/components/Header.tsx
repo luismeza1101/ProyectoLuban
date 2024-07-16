@@ -1,10 +1,11 @@
 import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
-import Search from "./Algolia";
+// import Search from "./Algolia";
 import User from "./User";
 import RegisterUser from "./RegisterUser";
 import { ProductContext } from "../context/Contexto";
 import "../StyleSheets/Header.css";
+import ItemBarSearch from "./SearchBar";
 
 const Header = () => {
   const [showLinks, setShowLinks] = useState(false);
@@ -14,7 +15,9 @@ const Header = () => {
     return null;
   }
 
-  const { isLogged } = productContext;
+  const { isLogged} = productContext;
+
+
 
   return (
     <nav className="nav">
@@ -22,9 +25,7 @@ const Header = () => {
         <Link className="nav__item nav__item--logo" to="/">
           <img src="/logo.png" alt="LOGO" />
         </Link>
-        <div className="nav__item nav__item--searchBar">
-          <Search />
-        </div>
+        <ItemBarSearch/>
         <ul className={`links ${showLinks ? "show" : ""}`}>
           <li className="links__option">
             <Link className="links__link" to="/aboutUs">

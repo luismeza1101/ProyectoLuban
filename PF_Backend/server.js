@@ -10,6 +10,23 @@ const jwt = require('jsonwebtoken');// Generar y verificar tokens de sesión
 const app = express();
 const port = 3001;
 
+// Configura la conexión a la base de datos MySQL
+const connection = mysql.createConnection({
+  host: 'localhost', 
+  user: 'root', 
+  password: 'wY8$%jP!2@Fq', 
+  database: 'tienda_luban' 
+});
+
+// Conectar a la base de datos
+connection.connect(error => {
+  if (error) {
+    console.error('Error connecting to the database:', error);
+    return;
+  }
+  console.log('Connected to the MySQL database.');
+});
+
 // Permitir CORS para evitar problemas con las peticiones desde el frontend
 app.use(cors());
 app.use(bodyParser.json());
@@ -208,22 +225,6 @@ app.post('/api/send-email', async (req, res) => {
   }
 }); 
 
-// Configura la conexión a la base de datos MySQL
-const connection = mysql.createConnection({
-  host: 'localhost', 
-  user: 'root', 
-  password: 'wY8$%jP!2@Fq', 
-  database: 'tienda_luban' 
-});
-
-// Conectar a la base de datos
-connection.connect(error => {
-  if (error) {
-    console.error('Error connecting to the database:', error);
-    return;
-  }
-  console.log('Connected to the MySQL database.');
-});
 
 
 // Endpoint para obtener todos los productos

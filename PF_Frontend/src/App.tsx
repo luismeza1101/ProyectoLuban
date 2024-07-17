@@ -15,6 +15,7 @@ import Register from "./pages/Register";
 import { useContext, useEffect } from "react";
 import { getUserData } from "./fuctions";
 import ModifyInfoUser from "./pages/ModifyInfoUser";
+import { getProducts } from "../../PF_Backend/api";
 
 function App() {
 
@@ -24,7 +25,7 @@ function App() {
     return null;
   }
 
-  const {setUserData, setIsLogged, isModifyOpen} = productContext;
+  const {setUserData, setIsLogged, isModifyOpen, setProducts, setFilterPro,} = productContext;
 
   useEffect(() => {
     const token = localStorage.getItem('token');
@@ -33,6 +34,20 @@ function App() {
     }
   }, []);
 
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const products = await getProducts();
+        setProducts(products);
+        setFilterPro(products)
+      } catch (error) {
+        console.error("Error al obtener los productos");
+      }
+    };
+
+    fetchProducts();
+  
+  }, []);
 
   return (
         <>

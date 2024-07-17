@@ -1,7 +1,6 @@
 import ProductCard from "./ProductCard";
 import "../StyleSheets/Products.css";
-import { getProducts } from "../../../PF_Backend/api";
-import { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
 import { ProductContext } from "../context/Contexto";
 
 
@@ -15,30 +14,10 @@ const Products: React.FC = () => {
     return null;
   }
   
-  const { setProducts, filterPro, setFilterPro} = productContext;
+  const { filterPro, products} = productContext;
 
-  const [loading, setLoading] = useState<boolean>(true);
-  const [error, setError] = useState<string | null>(null);
 
-  useEffect(() => {
-    const fetchProducts = async () => {
-      try {
-        const products = await getProducts();
-        setProducts(products);
-        setFilterPro(products)
-      } catch (error) {
-        setError("Error al obtener los productos");
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchProducts();
-  
-  }, []);
-
-  if (loading) return <p>Cargando productos...</p>;
-  if (error) return <p>{error}</p>;
+  if (products.length == 0) return <p>Hubo un error en la obtencion de los productos</p>;
 
 
   return (

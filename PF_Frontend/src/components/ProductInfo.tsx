@@ -1,8 +1,9 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import "../StyleSheets/ProductInfo.css";
-import { addCar, decreaseCant, increaseCant } from "../fuctions";
+import { addCar } from "../fuctions";
 import { getImage } from "../fuctions";
 import { ProductContext } from "../context/Contexto";
+import { CarProduct } from "../types";
 
 interface Props {
   nombre: string;
@@ -10,6 +11,7 @@ interface Props {
   stock: number;
   image: string;
   categoria: number;
+  id: string
 }
 
 const ProductInfo: React.FC<Props> = ({
@@ -18,8 +20,8 @@ const ProductInfo: React.FC<Props> = ({
   image,
   stock,
   categoria,
+  id
 }) => {
-  const [cantidad, setCantidad] = useState(1);
   const productContext = useContext(ProductContext);
 
   if (!productContext) {
@@ -27,6 +29,11 @@ const ProductInfo: React.FC<Props> = ({
   }
 
   const { productCar, setProductCar, setPagoTotal, pagoTotal } = productContext;
+
+  const handleAddCar  = () => {
+    const product: CarProduct = { id, name: nombre, price: Number(precio)}
+    addCar({ product, productCar, setProductCar, setPagoTotal, pagoTotal });  
+  }
 
   const catImg = getImage(image, categoria);
 
@@ -56,32 +63,8 @@ const ProductInfo: React.FC<Props> = ({
         <div className="cantidad">
           <button
             type="button"
-            className="btn cantidad__modificar"
-            onClick={() => decreaseCant(cantidad, setCantidad)}
-          >
-            -
-          </button>
-          {cantidad}
-          <button
-            type="button"
-            className="btn cantidad__modificar"
-            onClick={() => increaseCant(cantidad, setCantidad)}
-          >
-            +
-          </button>
-          <button
-            type="button"
             className="btn btn-dark cantidad__agregar"
-            onClick={() =>
-              addCar(
-                Number(precio),
-                productCar,
-                setProductCar,
-                setPagoTotal,
-                pagoTotal,
-                nombre
-              )
-            }
+            onClick={handleAddCar}
           >
             Agregar al carrito
           </button>

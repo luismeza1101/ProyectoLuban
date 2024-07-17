@@ -36,7 +36,7 @@ const BestProducts = () => {
         <section className='bestProducts'>
           {/* Cartas de los productos mas vendidos */}
             {proOferta.map(product => (
-              <CardBestProduct key={product.id} title={product.nombre} image={product.imagen_url} id={product.id} descuento={product.descuento}/>
+              <CardBestProduct key={product.id} nombre={product.nombre} image={product.imagen_url} id={product.id} descuento={product.descuento} precio={product.precio}/>
             ))}
         </section>
     </div>

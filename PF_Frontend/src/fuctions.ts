@@ -1,5 +1,5 @@
 import { fetchWithAuth } from "../../PF_Backend/api";
-import { CarProduct, User } from "./types";
+import {  ParamsAddCar, User } from "./types";
 
 // Funcion para aumentar la cantidad de productos
 export const increaseCant = (
@@ -50,18 +50,21 @@ export const getImage = (imageName: string, categoria: number) => {
   }
 };
 // Funcion para añadir al carrito
-export const addCar = (
-  price: number,
-  productCar: CarProduct[],
-  setProductCar: (productCar: CarProduct[]) => void,
-  setPagoTotal: (monto: number) => void,
-  pagoTotal: number,
-  name: string
-) => {
-  let newPrice = price.toString();
-  setProductCar([...productCar, { name: name, price: price }]);
-  alert("Producto añadido al carrito");
-  setPagoTotal(pagoTotal + parseFloat(newPrice));
+export const addCar = ({
+  product,
+  productCar,
+  setProductCar,
+  setPagoTotal,
+  pagoTotal,
+}: ParamsAddCar) => {
+  const productExists = productCar.some((item) => item.id === product.id);
+  if (productExists) {
+    alert('El producto ya está en el carrito');
+  } else {
+    setProductCar([...productCar, product]);
+    setPagoTotal(Number(pagoTotal) + Number(product.price));
+    alert('Producto añadido al carrito');
+  }
 };
 
 //Obtener datos del usuario

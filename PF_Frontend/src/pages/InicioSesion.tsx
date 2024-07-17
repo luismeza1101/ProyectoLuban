@@ -1,26 +1,27 @@
-import "../StyleSheets/Login.css"; 
-import { useState, useContext } from "react";
+import "../StyleSheets/InicioSesion.css";
+import { useState, useContext, useEffect } from "react";
 import { signIn } from "../../../PF_Backend/api";
 import { ProductContext } from "../context/Contexto";
 import { getUserData } from "../fuctions";
+import { Link } from "react-router-dom";
 
-const Login: React.FC = () => {
+const InicioSesion: React.FC = () => {
   // Estados para almacenar los datos del usuario
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
-  
+
   const productContext = useContext(ProductContext);
 
   if (!productContext) {
     return null;
   }
 
-  const {setUserData, setIsLogged} = productContext;
+  const { setUserData, setIsLogged } = productContext;
 
   // Funcion para registrar nuevos usuarios
   const handleSignup = async (evt: React.FormEvent<HTMLFormElement>) => {
-    evt.preventDefault()
+    evt.preventDefault();
     try {
       const response = await signIn(email, password);
       setMessage(response.message);
@@ -30,20 +31,28 @@ const Login: React.FC = () => {
       setMessage("Error al iniciar sesión");
     }
   };
-
+  // UseEffect para hacer que el mensaje desaparezca después de 4 segundos
+  useEffect(() => {
+    if (message) {
+      const timer = setTimeout(() => {
+        setMessage("");
+      }, 3000);
+      return () => clearTimeout(timer);
+    }
+  }, [message]);
 
   return (
     <>
+      <Link className="logo" to={'/'}>
+        <img src="../../public/logo.png" alt="logo" className="logo__image" />
+      </Link>
       <div className="containerLogin">
-        <div className="form-container">
-          <div className="login-container">
+        <div className="formLogin">
             <h2>Bienvenido</h2>
-            <p>Inicie Sesión</p>
+            <p className="form--ligth">Inicie Sesión</p>
 
-            <form
-              onSubmit={handleSignup}
-            >
-              <p>
+            <form onSubmit={handleSignup} className="loginData">
+              <p className="loginData__section">
                 <label>Username</label>
                 <input
                   className="input"
@@ -54,7 +63,7 @@ const Login: React.FC = () => {
                 />
               </p>
 
-              <p>
+              <p className="loginData__section">
                 <label>Password</label>
                 <input
                   className="input"
@@ -64,21 +73,19 @@ const Login: React.FC = () => {
                   required
                 />
               </p>
-              <p>
+              <p className="loginData__section">
                 <input
-                  className="btn btn-login"
+                  className="btn btn-dark"
                   type="submit"
                   value="Iniciar sesión"
                 />
               </p>
               {message && <p>{message}</p>}
             </form>
-          </div>
-          <div className="welcome-screen-container"></div>
         </div>
       </div>
     </>
   );
 };
 
-export default Login;
+export default InicioSesion;

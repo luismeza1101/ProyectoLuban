@@ -26,3 +26,8 @@
 .results:hover{
     background-color: #ccc;
 }
+@media screen and (max-width: 1190px) {
+    .searchBar{
+        width: 50%;
+    }
+}

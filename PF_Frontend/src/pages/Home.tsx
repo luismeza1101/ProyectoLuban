@@ -29,7 +29,7 @@ const Home = () => {
             {reseñasClientes.map(reseña => (
               <div className="reseña">
                 <div className="reseña__user">
-                  <img src={reseña.imagen} alt="Imagen de la persona" className="reseña__imagen"/>
+                  <img src={`../../public/clientes/${reseña.imagen}.jpg`} alt="Imagen de la persona" className="reseña__imagen"/>
                   <h5 className="reseña__nombre">{reseña.nombre}</h5>
                 </div>
                 <p className="reseña__descriptcion">{reseña.descripcion}</p>

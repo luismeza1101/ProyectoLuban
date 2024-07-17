@@ -1,5 +1,4 @@
 import "../StyleSheets/Pagos.css";
-import Footer from "../components/Footer";
 import Header from "../components/Header";
 
 const Pagos = () => {
@@ -81,7 +80,6 @@ const Pagos = () => {
             />
           </form>
         </div>
-        <Footer/>
     </>
   );
 };

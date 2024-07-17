@@ -1,6 +1,7 @@
 import "../StyleSheets/Register.css"; 
 import { registerUser } from "../../../PF_Backend/api";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 const Register: React.FC = () => {
   // Estados para almacenar los datos del usuario
@@ -21,12 +22,22 @@ const Register: React.FC = () => {
       setMessage("Ya existe este usuario.");
     }
   };
+  useEffect(() => {
+    if (message) {
+      const timer = setTimeout(() => {
+        setMessage("");
+      }, 3000);
+      return () => clearTimeout(timer);
+    }
+  }, [message]);
 
   return (
     <>
-      <div className="containerLogin">
-        <div className="form-container">
-          <div className="login-container">
+      <Link className="logo" to={'/'}>
+        <img src="../../public/logo.png" alt="logo" className="logo__image" />
+      </Link>
+      <div className="registerLogin">
+        <div className="form__register">
             <h2>Bienvenido</h2>
             <p>Registrese</p>
 
@@ -71,7 +82,7 @@ const Register: React.FC = () => {
                 />
               </p>
               <p>
-                <label>Password</label>
+                <label>Contraseña</label>
                 <input
                   className="input"
                   type="password"
@@ -90,7 +101,6 @@ const Register: React.FC = () => {
               {message && <p>{message}</p>}
             </form>
           </div>
-        </div>
       </div>
     </>
   );

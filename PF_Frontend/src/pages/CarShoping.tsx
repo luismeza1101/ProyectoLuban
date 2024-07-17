@@ -18,6 +18,8 @@ const CarShoping = () => {
   }
 
   const { productCar } = productContext;
+  console.log(productCar)
+
   
   return (
     <>
@@ -27,7 +29,7 @@ const CarShoping = () => {
         {/* Lista de todos los productos que se añadio */}
         <ul className="listP">
           {productCar.map(pro => (
-            <ProductCar name={pro.name} price={pro.price} key={pro.name}/>
+            <ProductCar name={pro.name} price={pro.price} key={pro.id}/>
           ))}
         </ul>
         {/* Formulario para el resumen de todo lo agregado */}

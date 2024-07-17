@@ -46,8 +46,17 @@ export type MuebleOferta = Mueble & {
 }
 
 export interface CarProduct {
+  id: string
   name: string
   price: number
+}
+
+export interface ParamsAddCar {
+  product: CarProduct
+  productCar: CarProduct[];
+  setProductCar: (productCar: CarProduct[]) => void;
+  setPagoTotal: (monto: number) => void;
+  pagoTotal: number;
 }
 
 export interface ProOferta{

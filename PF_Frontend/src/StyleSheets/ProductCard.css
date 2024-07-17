@@ -1,12 +1,19 @@
 .productCard {
   display: flex;
-  justify-content: space-between;
-  padding-bottom: 10px;
-  border: 2px solid #000;
+  border: 1px solid #000;
+  position: relative;
+  overflow: hidden;
 }
 .productCard__btn {
-  width: 90%;
-  margin: 0 auto;
+  position: absolute;
+  width: 15%;
+  height: 10%;
+  border-radius: 5px;
+  transform: translateX(-100%);
+  transition: .5s;
+}
+.productCard__btn .bi{
+  font-size: 20px;
 }
 .card__link {
   color: #000;
@@ -14,4 +21,10 @@
 }
  .card img{
     width: 100%;
- }
+}
+.productCard:hover .productCard__btn{
+  transform: translateX(0);
+}
+.productCard:hover{
+  box-shadow: 0px 0px 25px -4px rgba(0,0,0,0.75);
+}

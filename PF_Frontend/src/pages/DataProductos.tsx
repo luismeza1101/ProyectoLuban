@@ -1,19 +1,15 @@
 import { useParams } from "react-router-dom";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
-import InfoAdicionalProduct from "../components/InfoAdicionalProduct";
 import ProductInfo from "../components/ProductInfo";
 import { useEffect, useState } from "react";
 import { getProductById } from "../../../PF_Backend/api";
 import { Mueble } from "../types";
 
-
-
 const DataProductos = () => {
   const { id } = useParams<{ id: string }>();
   const [mueble, setMueble] = useState<Mueble | null>(null);
   const [error, setError] = useState<string | null>(null);
-
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -44,8 +40,11 @@ const DataProductos = () => {
         stock={mueble.stock}
         image={mueble.imagen_url}
         categoria={mueble.categoria_id}
+        id={id!}
       />
-      <InfoAdicionalProduct description={mueble.descripcion} />
+      <section className="container infoAd">
+        <p>{mueble.descripcion}</p>
+      </section>
       <Footer />
     </>
   );

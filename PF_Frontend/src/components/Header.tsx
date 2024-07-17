@@ -26,7 +26,6 @@ const Header = () => {
           <img src="/logo.png" alt="LOGO" />
         </Link>
         <SearchBar/>
-          <input type="text" />
         <ul className={`links ${showLinks ? "show" : ""}`}>
           <li className="links__option">
             <Link className="links__link" to="/aboutUs">

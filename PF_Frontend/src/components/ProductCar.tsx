@@ -52,7 +52,7 @@ console.log(typeof pagoTotal)
             {/* Nombre del producto */}
             <p className='info__name m-0'>{name}</p>
             {/* Cantidad del producto */}
-            <span className='info__precio'>{`$${price}`}</span>
+            <span className='info__precio'>{`S/${price}`}</span>
           </div>
           {/* Botones para calcular la cantidad y eliminar un producto */}
           <div className='actuDatos'>

@@ -3,6 +3,7 @@ import "../StyleSheets/ProductCard.css";
 import { ProductContext } from "../context/Contexto";
 import { addCar, getImage } from "../fuctions";
 import { Link } from 'react-router-dom';
+import { CarProduct } from "../types";
 
 interface Props {
   name: string;
@@ -24,6 +25,11 @@ const ProductCard: React.FC<Props> = ({ name, price, image, categoria, id}) => {
 
   const imageURL = getImage(image, categoria);
 
+  const handleAddCar  = () => {
+    const product: CarProduct = { id, name, price}
+    addCar({ product, productCar, setProductCar, setPagoTotal, pagoTotal });  
+  }
+
   return (
     // Carta que contiene cada producto en individual
     <div className="card productCard">
@@ -38,12 +44,12 @@ const ProductCard: React.FC<Props> = ({ name, price, image, categoria, id}) => {
           {/* Nombre del producto */}
           <h5 className="card-title">{name}</h5>
           {/* Precio */}
-          <p className="card-text price">{`$${price}`}</p>
+          <p className="card-text price">{`S/${price}`}</p>
         </div>
       </Link>
           {/* Boton de añadir al carrito */}
-          <button className="btn btn-dark productCard__btn" onClick={() => addCar(price, productCar, setProductCar, setPagoTotal, pagoTotal, name)}>
-            Añadir al carrito
+          <button className="btn btn-dark productCard__btn" onClick={handleAddCar}>
+          <i className="bi bi-cart2"></i>
           </button>
     </div>
   );

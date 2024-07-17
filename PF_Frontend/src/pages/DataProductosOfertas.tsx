@@ -1,7 +1,6 @@
 import { useParams } from "react-router-dom"
 import Footer from "../components/Footer"
 import Header from "../components/Header"
-import InfoAdicionalProduct from "../components/InfoAdicionalProduct"
 import ProductInfoOferta from "../components/ProductInfoOferta"
 import { useEffect, useState } from "react"
 import { getProductByIdOferta } from "../../../PF_Backend/api"
@@ -44,8 +43,11 @@ const DataProductos = () => {
         stock={mueble.stock}
         image={mueble.imagen_url}
         descuento={mueble.descuento}
+        id={id!}
         />
-        <InfoAdicionalProduct description={mueble.descripcion}/>
+        <section className="container infoAd">
+        <p>{mueble.descripcion}</p>
+      </section>
         <Footer/>
     </>
   )

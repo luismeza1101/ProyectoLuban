@@ -1,7 +1,6 @@
 import { useContext, useEffect } from 'react';
 import '../StyleSheets/ModalPago.css'
 import { ProductContext } from '../context/Contexto';
-import { Link } from 'react-router-dom';
 
 const ModalPago = () => {
 
@@ -32,7 +31,7 @@ const ModalPago = () => {
             pago en el siguiente paso.
           </p>
         </div>
-        <Link type="button" className="btn btn-dark btnPagar" to={'/pago'}>Ir a Comprar</Link>
+        <button type="button" className="btn btn-dark btnPagar"><a href="https://link.mercadopago.com.pe/lubanpago" target='blanck'>Ir a Comprar</a></button>
     </div>
   );
 };

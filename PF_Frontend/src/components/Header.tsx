@@ -5,7 +5,7 @@ import User from "./User";
 import RegisterUser from "./RegisterUser";
 import { ProductContext } from "../context/Contexto";
 import "../StyleSheets/Header.css";
-import ItemBarSearch from "./SearchBar";
+import SearchBar from "./SearchBar";
 
 const Header = () => {
   const [showLinks, setShowLinks] = useState(false);
@@ -25,7 +25,7 @@ const Header = () => {
         <Link className="nav__item nav__item--logo" to="/">
           <img src="/logo.png" alt="LOGO" />
         </Link>
-        <ItemBarSearch/>
+        <SearchBar/>
           <input type="text" />
         <ul className={`links ${showLinks ? "show" : ""}`}>
           <li className="links__option">

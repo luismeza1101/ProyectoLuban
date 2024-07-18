@@ -64,6 +64,7 @@ const FormContact: React.FC = () => {
             placeholder="Email"
             required
             onChange={(e) => setEmail(e.target.value)}
+            value={email}
           />
         </div>
         {/* Sección donde se escribira el asunto del contacto del cliente */}
@@ -77,6 +78,7 @@ const FormContact: React.FC = () => {
             id="exampleFormControlInput1"
             onChange={(e) => setAsunto(e.target.value)}
             placeholder="Asunto"
+            value={asunto}
             required
           />
         </div>
@@ -92,6 +94,7 @@ const FormContact: React.FC = () => {
           rows={3}
           onChange={(e) => setText(e.target.value)}
           placeholder="Descripción"
+          value={text}
           required
         ></textarea>
       </div>

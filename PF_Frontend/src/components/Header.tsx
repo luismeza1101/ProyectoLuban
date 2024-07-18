@@ -1,6 +1,5 @@
 import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
-// import Search from "./Algolia";
 import User from "./User";
 import RegisterUser from "./RegisterUser";
 import { ProductContext } from "../context/Contexto";
@@ -15,7 +14,7 @@ const Header = () => {
     return null;
   }
 
-  const { isLogged} = productContext;
+  const { isLogged, productCar} = productContext;
 
 
 
@@ -46,6 +45,7 @@ const Header = () => {
             <Link className="links__link" aria-disabled="true" to="/carShop">
               <i className="bi bi-cart3"></i>
             </Link>
+            <div className="cantProCar">{productCar.length}</div>
           </li>
           {isLogged ? <User /> : <RegisterUser />}
           {showLinks ? <i

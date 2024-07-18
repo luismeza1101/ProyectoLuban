@@ -27,7 +27,7 @@ const Home = () => {
           <h2>Nuestros mejores clientes</h2>
           <div className="reseñasClientes">
             {reseñasClientes.map(reseña => (
-              <div className="reseña">
+              <div className="reseña" key={reseña.nombre}>
                 <div className="reseña__user">
                   <img src={`../../public/clientes/${reseña.imagen}.jpg`} alt="Imagen de la persona" className="reseña__imagen"/>
                   <h5 className="reseña__nombre">{reseña.nombre}</h5>

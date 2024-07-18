@@ -31,7 +31,7 @@ const ModalPago = () => {
             pago en el siguiente paso.
           </p>
         </div>
-        <button type="button" className="btn btn-dark btnPagar"><a href="https://link.mercadopago.com.pe/lubanpago" target='blanck'>Ir a Comprar</a></button>
+        <a href="https://link.mercadopago.com.pe/lubanpago" target='blanck'><button type="button" className="btn btn-dark btnPagar">Ir a Comprar</button></a>
     </div>
   );
 };

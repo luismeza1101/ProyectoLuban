@@ -19,6 +19,11 @@ const InicioSesion: React.FC = () => {
 
   const { setUserData, setIsLogged } = productContext;
 
+  const limpiarCampos = () =>{
+    setEmail('')
+    setPassword('')
+  }
+
   // Funcion para registrar nuevos usuarios
   const handleSignup = async (evt: React.FormEvent<HTMLFormElement>) => {
     evt.preventDefault();
@@ -26,6 +31,7 @@ const InicioSesion: React.FC = () => {
       const response = await signIn(email, password);
       setMessage(response.message);
       await getUserData(setUserData, setIsLogged);
+      limpiarCampos()
     } catch (error) {
       console.error("Error al iniciar sesión:", error);
       setMessage("Error al iniciar sesión");
@@ -42,49 +48,61 @@ const InicioSesion: React.FC = () => {
   }, [message]);
 
   return (
-    <>
-      <Link className="logo" to={'/'}>
-        <img src="../../public/logo.png" alt="logo" className="logo__image" />
-      </Link>
-      <div className="containerLogin">
-        <div className="formLogin">
-            <h2>Bienvenido</h2>
-            <p className="form--ligth">Inicie Sesión</p>
-
-            <form onSubmit={handleSignup} className="loginData">
-              <p className="loginData__section">
-                <label>Username</label>
-                <input
-                  className="input"
-                  type="email"
-                  name="email"
-                  onChange={(e) => setEmail(e.target.value)}
-                  required
-                />
-              </p>
-
-              <p className="loginData__section">
-                <label>Password</label>
-                <input
-                  className="input"
-                  type="password"
-                  name="password"
-                  onChange={(e) => setPassword(e.target.value)}
-                  required
-                />
-              </p>
-              <p className="loginData__section">
-                <input
-                  className="btn btn-dark"
-                  type="submit"
-                  value="Iniciar sesión"
-                />
-              </p>
-              {message && <p>{message}</p>}
-            </form>
+    
+  <div className="login-container">
+    <div className="login-form">
+        <div className="login-form__text">
+          <h2>Bienvenido</h2>
+          <p className="login-form__subtitle">¡Hola de nuevo! Inicia sesión para acceder a tu cuenta y disfrutar de una gran experiencia.</p>
         </div>
-      </div>
-    </>
+
+        <form onSubmit={handleSignup} className="login-form__data">
+          <div className="login-form__info">
+            <h3>Inicie Sesión</h3>
+            <span>Si no tiene una cuenta, create una</span>
+          </div>
+          <div className="login-form__section">
+            <label htmlFor="email">Correo Electrónico</label>
+            <input
+              className="login-form__input"
+              type="email"
+              id="email"
+              name="email"
+              onChange={(e) => setEmail(e.target.value)}
+              value={email}
+              required
+            />
+          </div>
+
+          <div className="login-form__section">
+            <label htmlFor="password">Contraseña</label>
+            <input
+              className="login-form__input"
+              type="password"
+              id="password"
+              name="password"
+              onChange={(e) => setPassword(e.target.value)}
+              value={password}
+              required
+            />
+          </div>
+          <div className="login-form__section">
+            <input
+              className="btn btn-dark"
+              type="submit"
+              value="Iniciar sesión"
+            />
+            <Link to={'/sign-up'}>Crear cuenta</Link>
+          </div>
+          {message && <p>{message}</p>}
+        </form>
+    </div>
+  <Link className="register-logo" to={'/'}>
+    <img src="../../public/logo.png" alt="logo" className="register-logo__image" />
+  </Link>
+  </div>
+
+
   );
 };
 

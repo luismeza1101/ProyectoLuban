@@ -5,7 +5,6 @@
   margin:0; padding:0;
   box-sizing: border-box;
   outline: none; border:none;
-  text-transform: capitalize;
   transition: all .2s linear;
 }
 
@@ -39,7 +38,7 @@
   font-size: 20px;
   color:#333;
   padding-bottom: 5px;
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
 }
 
 .containerPago form .row .col .inputBox{

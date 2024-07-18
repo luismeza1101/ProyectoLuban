@@ -50,6 +50,19 @@
     position: relative;
     cursor: pointer;
 }
+.links__option--car {
+    position: relative;
+}
+.cantProCar{
+    position: absolute;
+    background-color: #000;
+    color: #fff;
+    border-radius: 50%;
+    width: 25px;
+    text-align: center;
+    top: -10px;
+    right: -10px;
+}
 @media screen and (max-width: 1190px) {
     .navbar-toggler{
         display: block;

@@ -31,13 +31,15 @@ export default {
 
 # Contenido de los componentes
 
- - BestProducts : Contienen los productos mas vendidos de la pagina principal, es el contenedor de todo el contenido, contiene CardBestProduct
+ - BestProducts : Contienen los productos mas vendidos de la pagina principal
 
  - CardBestProduct: Es la carta donde se encuentra el producto mas vendido, contiene una imagen del producto y su nombre
 
  - Carousel: Contiene el carrusel de las imagenes que muestran las ofertas que hay en la tienda, esta en la ventana principal
 
- - ModalPagos: Modal donde se ve el resumen de todas las cosas que el cliente añadio al carrito de compras, esta en la pagina del carrito
+ - CatProducts: Es el modal que se encuentra en la pagina de categorias, se usa para filtrar entre los productos
+
+ - CarProducts: Son los elementos que hay dentro del carrito de compras, son todos los productos que añadimos
 
  - Footer: Es el footer de la pagina, contiene los links de las redes sociales y mas
 
@@ -45,30 +47,55 @@ export default {
 
  - Header: Es el header de la pagina, contiene el logo de la empresa, una barra de busqueda de productos y las secciones de opciones de cuenta, el carrito y para acceder a la pagina de ayuda y de categorias
 
+ - ModalPagos: Modal donde se ve el resumen de todas las cosas que el cliente añadio al carrito de compras, esta en la pagina del carrito
+
  - OptionAccount: Es el modal que se muestra cuando se hace click en la imagen de perfil del usuario, muestra las opciones de la cuenta
 
- - ProductCar: Son los elementos que hay dentro del carrito de compras, son todos los productos que añadimos
+ - ProductCard: Es el componente de cada carta de cada producto
+
+ - ProductInfo: Es la informacion adicional de cada producto, redirigido desde cada producto
+
+ - ProductInfoOferta: Es la informacion adicional de cada producto en oferta, redirigido desde cada producto
+
+ - Products: Es la lista de todos los productos que hay
 
  - QuestionFrequent: Son las preguntas frecuentes que dan respuesta a las dudas comunes de los clientes, esta en la pagina de ayuda
 
- - MisionVision : Contiene la mision y vision de la empresa
+ - RegisterUser: Son las opciones que tiene el header, para que el usuario pueda registrarse e iniciar sesión, aparecen cuando el usuario no ingreso a su sesión
 
- - ProductInfo: Contiene los datos de cada producto, imagen, precio e informacion adicional
+ - SearchBar: Es la barra de busqueda que esta en el header
 
- - InfoAdicionalProduct: contiene la tabla donde ira informacion adicional de cada producto
+ - User: Es lo que aparece cuando el usuario inicia sesión
 
  # Contenido de las paginas
+ - AboutUs: Contiene el header, informacion acerca de la empresa y el footer
 
- - Home: Contiene el Header, Carousel, BestProducts, MisionVision y el Footer
+ - CarShoping: Contiene el header, la lista de los productos añadidos al carrito y ModalPagos
+
+ - Categories: Contiene el header, el modal para filtrar entre los productos, la lista de todos los productos y el footer
+
+ - DataProductos: Es la pagina dinamica de todos los productos, contiene al componente ProductInfo
+
+ - DataProductosOferta: Es la pagina dinamica de todos los productos en oferta, contiene al componente ProductInfoOferta
 
  - Help: Contiene el Header, QuestionFrequent, FormContact, Footer
 
- - Categories: Contiene Header, Lista de productos, Filtro de productos, Footer
- (EN PROCESO)
- 
- - CarShoping: Pagina del carrito de compras que tiene una lista de todos los productos y un resumen de la compra
+ - Home: Contiene el Header, Carousel, BestProducts y el Footer
 
- - DataProductos: Pagina individual de cada producto, donde se detalla su informacion
+ - InicioSesion: Es donde el usuario inicia sesion
+
+ - LibroReclamaciones: Es a donde se redirige cuando una persona quiere hacer un reclamo
+
+ - ModifyInfoUser: Es el modal que se abre cuando el usuario quiere cambiar su informacion
+
+ - Register: Es la pagina para que el uaurio pueda registrarse 
  
  # Contenido CSS
  - Cada archivo tiene sus estilos en el archivo css de su mismo nombre
+
+ # Adicional
+ - data: Es informacion que se usa para agregar o eliminar elementos 
+
+ - fuctions: Se encuentran funciones que son utilizadas por varios componentes
+
+ - types.d.ts: Son los tipos que utilizamos para tipar de mejor manera

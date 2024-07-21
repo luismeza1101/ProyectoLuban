@@ -8,7 +8,7 @@ interface Props {
   price: number
 }
 
-const ProductCar: React.FC<Props> = ({name, price}) => {
+const CarProducts: React.FC<Props> = ({name, price}) => {
 
   const productContext = useContext(ProductContext);
 
@@ -68,7 +68,7 @@ console.log(typeof pagoTotal)
 }
 
 
-export default ProductCar;
+export default CarProducts;
 
 
 

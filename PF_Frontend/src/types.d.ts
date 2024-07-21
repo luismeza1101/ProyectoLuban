@@ -3,7 +3,7 @@ export type Preguntas = {
     index: string;
     pregunta: string;
     respuesta: string;
-  };
+};
 
 // Estructura de las reseñas de clientes
 export type Reseñas = {

@@ -2,9 +2,9 @@ import { useContext } from "react";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 import ModalPago from "../components/ModalPago";
-import ProductCar from "../components/ProductCar";
 import "../StyleSheets/CarShoping.css";
 import { ProductContext } from "../context/Contexto";
+import CarProducts from "../components/CarProducts";
 
 
 
@@ -29,7 +29,7 @@ const CarShoping = () => {
         {/* Lista de todos los productos que se añadio */}
         <ul className="listP">
           {productCar.map(pro => (
-            <ProductCar name={pro.name} price={pro.price} key={pro.id}/>
+            <CarProducts key={pro.id} name={pro.name} price={pro.price} />
           ))}
         </ul>
         {/* Formulario para el resumen de todo lo agregado */}

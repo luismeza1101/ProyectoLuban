@@ -7,7 +7,6 @@ import CarShoping from "./pages/CarShoping";
 import AboutUs from "./pages/AboutUs";
 import InicioSesion from "./pages/InicioSesion";
 import { ProductContext } from "./context/Contexto";
-import Pagos from "./pages/Pagos";
 import LibroReclamaciones from "./pages/LibroReclamaciones";
 import DataProductos from "./pages/DataProductos";
 import DataProductosOfertas from "./pages/DataProductosOfertas";
@@ -61,7 +60,6 @@ function App() {
             <Route path="/oferta/:id" element={<DataProductosOfertas/>} />
             <Route path="/sign-in" element={<InicioSesion/>} />
             <Route path="/sign-up" element={<Register/>} />
-            <Route path="/pago" element={<Pagos />} />
             <Route path="/libroReclamaciones" element={<LibroReclamaciones />} />
           </Routes>
             {isModifyOpen ? <ModifyInfoUser/> : null}
